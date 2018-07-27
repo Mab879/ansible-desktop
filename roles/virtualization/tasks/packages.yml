@@ -1,12 +1,12 @@
 ---
 
-- name: install the 'virtualization' package group
+- name: Install the 'virtualization' package group
   become: yes
   dnf:
     name: '@virtualization'
     state: present
 
-- name: install vfio dracut 
+- name: Install vfio dracut 
   become:
   copy:
     content: 'add_drivers+="vfio vfio_iommu_type1 vfio_pci vfio_virqfd"'
@@ -18,3 +18,11 @@
 - name: dracut regen
   - become: true
   - command: dracut -f
+
+- name: Add immou to kvm boot
+  become: yes
+  lineinfile:
+    state: present
+    dest: /etc/default/grub
+    backrefs: yes
+    line: '\1 iommu=1 intel_iommu=on kvm-intel.nested=1 rd.driver.pre=vfio-pci\2'
