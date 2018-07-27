@@ -19,6 +19,9 @@
     - latex
     - ssh
     - zfs
-    # - virtualization
+    - virtualization
+    - gnome
+    - slack
+    - google-chrome
 
 
