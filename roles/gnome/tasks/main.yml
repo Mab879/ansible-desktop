@@ -1,6 +1,16 @@
 ---
 
+- name: Show seconds in clock
+  dconf: 
+    key: /org/gnome/desktop/interface/clock-show-seconds
+    value: "'true'"
+
+- name: Show date in clock
+  dconf: 
+    key: /org/gnome/desktop/interface/clock-show-date
+    value: "'true'"
+
 - name: Enable Night Light
   dconf:
     key: /org/gnome/settings-daemon/plugins/color/night-light-enabled
-    value: true
+    value: "'true'"
