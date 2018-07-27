@@ -1,0 +1,6 @@
+---
+- name: Install Atom
+  become: yes
+  dnf:
+    name: 'https://github.com/atom/atom/releases/download/v1.28.2/atom.x86_64.rpm'
+    state: present

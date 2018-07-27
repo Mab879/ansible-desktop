@@ -1,0 +1,51 @@
+---
+
+- name: Install rbenv build dependencies
+  become: true
+  dnf:
+    name={{ item }} state=installed
+  with_items:
+    - git-core
+    - zlib
+    - zlib-devel
+    - gcc-c++
+    - patch
+    - readline
+    - readline-devel
+    - libyaml-devel
+    - libffi-devel
+    - openssl-devel
+    - make
+    - bzip2
+    - autoconf
+    - automake
+    - libtool
+    - bison
+    - curl
+    - sqlite-devel
+
+- name: rbenv install
+  git: 
+      repo: https://github.com/rbenv/rbenv.git 
+      dest: ~/.rbenv
+
+- name: Creates directory
+  file: path=~/.rbenv/plugins/ state=directory
+
+- name: rbenv install
+  git: 
+      repo: https://github.com/rbenv/ruby-build
+      dest: ~/.rbenv/plugins/ruby-build
+
+- name: rbenv install zshrc
+  blockinfile:
+    path: ~/.zshrc
+    block: |
+      export PATH="$HOME/.rbenv/bin:$PATH"
+      echo 'eval "$(rbenv init -)"' >> ~/.zshrc
+
+- name:
+  command: ~/.rbenv/bin/rbenv install 2.5.1
+
+
+    

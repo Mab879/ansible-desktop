@@ -1,0 +1,10 @@
+---
+
+- name: Install postgres
+  become: true
+  dnf:
+    name={{ item }} state=installed
+  with_items:
+    - postgresql-server
+    - postgresql-contrib
+    - postgresql-devel

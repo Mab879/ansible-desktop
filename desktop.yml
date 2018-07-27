@@ -1,0 +1,24 @@
+---
+
+- hosts: localhost
+  user: mburket
+
+  vars_files:
+    - group_vars/all.yml
+
+
+  roles:
+    - common
+    - rpm_fusion_free
+    - rpm_fusion_nonfree
+    - dev
+    - postgres
+    - docker
+    - rbenv
+    - iscore
+    - latex
+    - ssh
+    - zfs
+    # - virtualization
+
+

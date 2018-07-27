@@ -1,0 +1,20 @@
+---
+
+- name: install the 'virtualization' package group
+  become: yes
+  dnf:
+    name: '@virtualization'
+    state: present
+
+- name: install vfio dracut 
+  become:
+  copy:
+    content: 'add_drivers+="vfio vfio_iommu_type1 vfio_pci vfio_virqfd"'
+    dest: /etc/dracut.conf.d/vfio.conf
+    force: no
+    group: root
+    owner: root
+
+- name: dracut regen
+  - become: true
+  - command: dracut -f

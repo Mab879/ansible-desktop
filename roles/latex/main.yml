@@ -1,0 +1,11 @@
+---
+
+- name: Install LaTeX packages
+  become: true
+  dnf:
+    name={{ item }} state=installed
+  with_items:
+    - texlive
+    - texmaker
+    - pandoc
+    - wkhtmltopdf

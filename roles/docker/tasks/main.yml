@@ -1,0 +1,23 @@
+---
+
+- name: Install docker
+  become: true
+  dnf:
+    name={{ item }} state=installed
+  with_items:
+    - docker
+    - docker-compose
+
+- name: Create docker group
+  group:
+    name: docker
+    state: present
+    system: yes
+  become: true
+
+
+- name: Append the user to docker group
+  user:
+    name: {{ user }}
+    groups: docker
+    append: yes

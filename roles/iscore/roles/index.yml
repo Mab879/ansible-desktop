@@ -1,0 +1,16 @@
+--- 
+
+- name: Install IScorE packages
+  become: true
+  dnf:
+    name={{ item }} state=installed
+  with_items:
+    - python
+    - python3
+    - python-devel
+    - python3-devel
+    - redis
+    - sqlite-devel
+    - sqlite
+    - python-pip
+    - python3-pip

@@ -1,0 +1,30 @@
+---
+
+- name: Install Ansible Python 3 Dependencies
+    become: yes
+    with_items:
+    - python3-firewall
+    dnf:
+      name: "{{item}}"
+      state: present
+      
+- name: Install openssh-server
+  become: yes
+  package:
+    name: openssh-server
+    state: present
+
+- name: Firewalld ssh
+  become: yes
+  firewalld:
+    service: ssh
+    permanent: true
+    state: enabled
+
+- name: start ssh on start up
+  become: yes
+  systemd:
+    name: sshd
+    enabled: yes
+    masked: no
+    state: started

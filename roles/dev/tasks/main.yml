@@ -1,0 +1,33 @@
+---
+
+- name: Install dev packages
+  become: true
+  dnf:
+    name={{ item }} state=installed
+  with_items:
+    - gnome-builder
+    - vim
+    - '@Development tools'
+    - zsh
+    - curl
+    - wget
+    - git
+    - sysstat
+    - cloc
+    - astyle
+    - mercurial
+    - cmake
+    - make
+    - autoconf
+    - automake
+    - zlib
+    - zlib-devel
+    - readline
+    - readline-devel
+    - libyaml-devel
+    - libffi-devel
+- name: Create code folder
+  file: 
+    path: /home/{{user}}/code
+    state: directory
+    mode: 0755

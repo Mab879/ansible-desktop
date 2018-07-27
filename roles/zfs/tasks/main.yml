@@ -1,0 +1,23 @@
+---
+
+- name: Install zfs repos
+  become: yes
+  dnf:
+    name: 'http://download.zfsonlinux.org/fedora/zfs-release.fc28.noarch.rpm'
+    state: present
+
+- name: ZFS on Linux keys
+  become: yes
+  command: gpg --quiet --with-fingerprint /etc/pki/rpm-gpg/RPM-GPG-KEY-zfsonlinux
+
+- name: Install kernel-devel
+  become: yes
+  package:
+    name: kernel-devel
+    state: present
+
+- name: Install zfs
+  become: yes
+  package:
+    name: zfs
+    state: present

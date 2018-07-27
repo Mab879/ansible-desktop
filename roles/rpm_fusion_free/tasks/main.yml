@@ -1,0 +1,7 @@
+---
+
+- name: Install RPM Fusion Free
+  become: yes
+  dnf:
+    name: 'http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-28.noarch.rpm'
+    state: present
