@@ -6,8 +6,26 @@
     name: '@virtualization'
     state: present
 
+
+- name: Install vfio
+  become: yes
+  file:
+    content: "options vfio-pci ids=10de:13c2,10de:0fbb"
+    dest: /etc/modprobe.d/vfio.conf
+    force: no
+    root: root
+    group: root
+    force: no
+
+
+- name: Nested KVM
+  become: yes
+  lineinfile:
+    regexp: '^#options kvm_intel nested=1'
+    line: 'options kvm_intel nested=1'
+
 - name: Install vfio dracut 
-  become:
+  become: yes
   copy:
     content: 'add_drivers+="vfio vfio_iommu_type1 vfio_pci vfio_virqfd"'
     dest: /etc/dracut.conf.d/vfio.conf
@@ -26,3 +44,7 @@
     dest: /etc/default/grub
     backrefs: yes
     line: '\1 iommu=1 intel_iommu=on kvm-intel.nested=1 rd.driver.pre=vfio-pci\2'
+
+- name: Regen GRUB2 Config
+  become: yes
+  command: grub2-mkconfig -o /etc/grub2-efi.cfg
