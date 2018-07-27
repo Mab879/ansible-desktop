@@ -26,6 +26,8 @@
     - readline-devel
     - libyaml-devel
     - libffi-devel
+    - "@c-development"
+    - nodejs
 - name: Create code folder
   file: 
     path: /home/{{user}}/code

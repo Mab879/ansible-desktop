@@ -28,6 +28,16 @@
     - strace
     - duplicity
     - libselinux-python
+    - nload
+    - nmon
+    - nautilus-open-terminal
+    - ffmpeg
+    - gparted
+    - gnome-backgrounds
+    - gnome-backgrounds-extras
+    - astronomy-backgrounds
+    - elinks
+    - lm_sensors
 
 - name: Cloning oh-my-zsh
   git:
@@ -49,8 +59,9 @@
     name: mburket
     shell: /bin/zsh
 
-- name: Add yser
+- name: Add User to Wireshark group
+  become: yes
   user:
-    name: {{ user }}
+    name: "{{ user }}"
     groups: wireshark
     append: yes
