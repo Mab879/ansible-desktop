@@ -3,14 +3,30 @@
 - name: Show seconds in clock
   dconf: 
     key: /org/gnome/desktop/interface/clock-show-seconds
-    value: "'true'"
+    value: "true"
 
 - name: Show date in clock
   dconf: 
     key: /org/gnome/desktop/interface/clock-show-date
-    value: "'true'"
+    value: "true"
 
 - name: Enable Night Light
   dconf:
     key: /org/gnome/settings-daemon/plugins/color/night-light-enabled
-    value: "'true'"
+    value: "true"
+
+- name: Enable Theme
+  dconf:
+    key: /org/gnome/desktop/interface/gtk-theme
+    value: "'Adwaita-dark'"
+
+- name: Disable Dynmic Workspaces
+  dconf:
+    key: /org/gnome/shell/overrides/dynamic-workspaces
+    value: "false"
+
+- name: Set Window Buttons
+  dconf:
+    key: /org/gnome/desktop/vm/preferences/button-layout
+    value: "':minimize,maximize,close'"
+
