@@ -18,6 +18,14 @@
 
 - name: Append the user to docker group
   user:
-    name: {{ user }}
+    name: "{{ user }}"
     groups: docker
     append: yes
+
+- name: start docker on start up
+  become: yes
+  systemd:
+    name: docker
+    enabled: yes
+    masked: no
+    state: started
