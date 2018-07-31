@@ -8,20 +8,20 @@
 
 
   roles:
-    - common
-    - rpm_fusion_free
-    - rpm_fusion_nonfree
-    - dev
-    - postgres
-    - docker
-    - rbenv
-    - iscore
-    - latex
-    - ssh
-    - zfs
-    - virtualization
+          # - common
+          #- rpm_fusion_free
+          #- rpm_fusion_nonfree
+          #- dev
+          #- postgres
+          #- docker
+          #- rbenv
+          #- iscore
+          #- latex
+          #- ssh
+          #- zfs
+          #- virtualization
     - gnome
-    - slack
-    - google-chrome
+      #- slack
+      #- google-chrome
 
 

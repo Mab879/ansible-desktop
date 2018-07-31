@@ -42,6 +42,7 @@
   lineinfile:
     state: present
     dest: /etc/default/grub
+    regexp: '^(GRUB_CMDLINE_LINUX=(?!.*iommu)\"[^\"]+)(\".*)'
     backrefs: yes
     line: '\1 iommu=1 intel_iommu=on kvm-intel.nested=1 rd.driver.pre=vfio-pci\2'
 
