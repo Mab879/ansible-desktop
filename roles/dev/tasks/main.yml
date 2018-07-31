@@ -30,6 +30,6 @@
     - nodejs
 - name: Create code folder
   file: 
-    path: /home/{{user}}/code
+    path: "/home/{{user}}/code"
     state: directory
     mode: 0755

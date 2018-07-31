@@ -67,7 +67,7 @@
     regexp: '^ZSH_THEME=".+"'
     line: 'ZSH_THEME="mortalscumbag"'
 
-- name: Add User to Wireshark group
+- name: Add user to Wireshark group
   become: yes
   user:
     name: "{{ user }}"

@@ -46,6 +46,6 @@
     backrefs: yes
     line: '\1 iommu=1 intel_iommu=on kvm-intel.nested=1 rd.driver.pre=vfio-pci\2'
 
-- name: Regen GRUB2 Config
+- name: Regenerate GRUB2 config
   become: yes
   command: grub2-mkconfig -o /etc/grub2-efi.cfg
