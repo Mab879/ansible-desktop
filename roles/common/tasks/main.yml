@@ -38,6 +38,7 @@
     - astronomy-backgrounds
     - elinks
     - lm_sensors
+    - deja-dup
 
 - name: Cloning oh-my-zsh
   git:
@@ -58,6 +59,13 @@
   user:
     name: mburket
     shell: /bin/zsh
+
+- name: Set my zsh theme
+  lineinfile:
+    state: present
+    dest: ~/.zshrc
+    regexp: '^ZSH_THEME=".+"'
+    line: 'ZSH_THEME="mortalscumbag"'
 
 - name: Add User to Wireshark group
   become: yes
