@@ -73,3 +73,10 @@
     name: "{{ user }}"
     groups: wireshark
     append: yes
+
+- name: COWS!
+  blockinfile:
+    path: ~/.zshrc
+    block: |
+      export ANSIBLE_COW_SELECTION=random
+  
