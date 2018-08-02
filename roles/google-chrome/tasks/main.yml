@@ -1,6 +1,6 @@
 ---
 
-name: Install Google Chrome Repos
+- name: Install Google Chrome Repos
   yum_repository:
     name: google-chrome
     description: Google Chrome
@@ -10,7 +10,7 @@ name: Install Google Chrome Repos
     gpgkey: https://dl.google.com/linux/linux_signing_key.pub
 
 
-name: Install Google Chrome
+- name: Install Google Chrome
   dnf:
     name: google-chrome-stable
     state: latest
