@@ -8,3 +8,16 @@
     - postgresql-server
     - postgresql-contrib
     - postgresql-devel
+
+
+- name: Postgres Setup
+  become: true
+  command: /usr/bin/postgresql-setup --initdb
+
+- name: Start postgresql on start up
+  become: yes
+  systemd:
+    name: postgresql
+    enabled: yes
+    masked: no
+    state: started
