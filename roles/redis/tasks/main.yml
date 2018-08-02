@@ -1,0 +1,15 @@
+---
+- name: Install IScorE packages
+  become: true
+  dnf:
+    name={{ item }} state=installed
+  with_items:
+    - redis
+
+- name: Start redis on start up
+  become: yes
+  systemd:
+    name: redis
+    enabled: yes
+    masked: no
+    state: started
