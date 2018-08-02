@@ -24,18 +24,6 @@
     regexp: '^#options kvm_intel nested=1'
     line: 'options kvm_intel nested=1'
 
-- name: Install vfio dracut 
-  become: yes
-  copy:
-    content: 'add_drivers+="vfio vfio_iommu_type1 vfio_pci vfio_virqfd"'
-    dest: /etc/dracut.conf.d/vfio.conf
-    force: no
-    group: root
-    owner: root
-
-- name: dracut regen
-  - become: true
-  - command: dracut -f
 
 - name: Add immou to kvm boot
   become: yes
@@ -49,3 +37,16 @@
 - name: Regenerate GRUB2 config
   become: yes
   command: grub2-mkconfig -o /etc/grub2-efi.cfg
+
+- name: "Install vfio dracut"
+  become: yes
+  copy:
+    content: "add_drivers+=\"vfio vfio_iommu_type1 vfio_pci vfio_virqfd\""
+    dest: /etc/dracut.conf.d/vfio.conf
+    force: false
+    group: root
+    owner: root
+
+- name: Dracut regen
+  become: yes
+  command: 'dracut -f'
