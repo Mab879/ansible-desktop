@@ -27,6 +27,10 @@
 
 - name: Set Window Buttons
   dconf:
-    key: /org/gnome/desktop/vm/preferences/button-layout
+    key: /org/gnome/desktop/wm/preferences/button-layout
     value: "':minimize,maximize,close'"
 
+- name: Disable The Bell
+  dconf:
+    key: /org/gnome/desktop/wm/preferences/audible-bell
+    value: "true"
