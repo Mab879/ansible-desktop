@@ -1,0 +1,38 @@
+--- 
+
+- name: Install IScorE packages
+  become: true
+  dnf:
+    name={{ item }} state=installed
+  with_items:
+    - python
+    - python3
+    - python-devel
+    - python3-devel
+    - redis
+    - sqlite-devel
+    - sqlite
+    - python-pip
+    - python3-pip
+    - libevent-devel
+    - zeromq-devel 
+    - python-devel
+    - openldap-devel
+    - libxml2-devel
+    - cyrus-sasl-lib
+    - openssl-devel
+    - freetds-devel
+    - libjpeg-turbo
+    - mysql
+    - mysql-devel
+
+- name: Virtual Env Wrapper Install
+  pip:
+   name: virtualenvwrapper
+   extra_args: --user
+
+- name: Virtual Env Wrapper Install Shell
+  blockinfile:
+    path: ~/.zshrc
+    block: |
+      source  $HOME/.local/bin/virtualenvwrapper.sh
