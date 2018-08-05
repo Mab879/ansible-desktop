@@ -9,10 +9,20 @@
     - postgresql-contrib
     - postgresql-devel
 
+# - name: Postgres Setup
+#   become: true
+#   command: /usr/bin/postgresql-setup --initdb
 
-- name: Postgres Setup
-  become: true
-  command: /usr/bin/postgresql-setup --initdb
+# - name:
+#   become: yes
+#   become_user: postgres
+#   command: "createuser {{ user }} --superuser"
+
+- name:
+  become: yes
+  become_user: postgres
+  command: "createdb {{ user }} -O {{ user }}"
+  
 
 - name: Start postgresql on start up
   become: yes
@@ -21,3 +31,5 @@
     enabled: yes
     masked: no
     state: started
+
+
