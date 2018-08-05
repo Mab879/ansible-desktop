@@ -1,0 +1,21 @@
+---
+- name: Add .NET Core Repo
+  yum_repository:
+    name: packages-microsoft-com-prod
+    description: packages-microsoft-com-prod
+    baseurl: https://packages.microsoft.com/fedora/27/prod/
+    gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+    enabled: true
+    gpgcheck: true
+    state: present
+  become: true
+
+- name: Install .NET Core
+  become: true
+  dnf:
+    name={{ item }} state=installed
+  with_items:
+    - libicu
+    - libunwind
+    - dotnet-sdk-2.1
+

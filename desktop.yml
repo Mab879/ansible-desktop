@@ -7,9 +7,9 @@
     - group_vars/all.yml
   
   roles: 
-    - common
     - rpm_fusion_free
     - rpm_fusion_nonfree
+    - common
     - dev
     - postgres
     - docker
@@ -22,5 +22,7 @@
     - gnome
     - slack
     - google-chrome
+    - php
+    - dot-net-core
 
 

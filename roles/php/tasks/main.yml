@@ -1,0 +1,20 @@
+---
+
+- name: Install PHP
+  become: true
+  dnf:
+    name={{ item }} state=installed
+  with_items:
+    - php 
+    - php-common 
+    - php-cli
+    - php-pdo 
+    - php-mbstring 
+    - php-zip 
+    - php-xml
+    - composer
+    - php-json
+    - php-ctype
+
+- name: Install laravel
+  command: composer global require "laravel/installer"
