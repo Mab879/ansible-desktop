@@ -79,4 +79,11 @@
     path: ~/.zshrc
     block: |
       export ANSIBLE_COW_SELECTION=random
+      
+- name: GPG TTY Fix
+  blockinfile:
+    path: ~/.zshrc
+    block: |
+       export GPG_TTY=$(tty)
+      
   
